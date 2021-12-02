@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="itemPrice" type="id"/>
+    <item name="editTextSlut" type="id"/>
+    <item name="textView3" type="id"/>
+    <item name="itemQuantity" type="id"/>
+    <item name="itemName" type="id"/>
+    <item name="cancelButton" type="id"/>
+    <item name="addButton" type="id"/>
+    <item name="removeButton" type="id"/>
+</resources>

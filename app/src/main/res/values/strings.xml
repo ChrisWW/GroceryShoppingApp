@@ -2,4 +2,13 @@
     <string name="app_name">ShoppingApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add">Add</string>
+    <string name="fortryd">cancel</string>
+    <string name="slut_nr">slut_nr</string>
+    <string name="tilf_j_eller_fjern_en_sekvens_af_jumbob_ger">tilf_j_eller_fjern_en_sekvens_af_jumbob_ger</string>
+    <string name="start_nr">start_nr</string>
+    <string name="fjern">delete</string>
+    <string name="dialog_remove_add_title">dialog_remove_add_title</string>
+    <string name="no_negative_numbers">no_negative_numbers</string>
+    <string name="end_number_bigger_than_start">end_number_bigger_than_start</string>
 </resources>
