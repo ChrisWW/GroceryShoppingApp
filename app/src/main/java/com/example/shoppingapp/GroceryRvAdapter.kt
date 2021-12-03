@@ -1,13 +1,15 @@
 package com.example.shoppingapp
 
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 
-class GroceryRvAdapter (var list: List<GroceryItems>, val groceryItemClickInterface: GroceryRvAdapter.GroceryItemClickInterface) : RecyclerView.Adapter<GroceryRvAdapter.GroceryViewHolder>(){
+class GroceryRvAdapter (var list: List<GroceryItems>, val groceryItemClickInterface: GroceryRvAdapter.GroceryItemClickInterface, private val vm: GroceryViewModel) : RecyclerView.Adapter<GroceryRvAdapter.GroceryViewHolder>(){
 
 
     inner class GroceryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -15,7 +17,7 @@ class GroceryRvAdapter (var list: List<GroceryItems>, val groceryItemClickInterf
         val quantityTv = itemView.findViewById<TextView>(R.id.idTvQuantity)
         val rateTv = itemView.findViewById<TextView>(R.id.idTvRate)
         val amounTv = itemView.findViewById<TextView>(R.id.idTvAmount)
-        val deleteTv = itemView.findViewById<TextView>(R.id.idTvDelete)
+        val deleteTv = itemView.findViewById<ImageView>(R.id.idTvDelete)
 
     }
 
@@ -79,7 +81,8 @@ class GroceryRvAdapter (var list: List<GroceryItems>, val groceryItemClickInterf
         val itemTotal : Int = list.get(position).itemPrice*list.get(position).itemQuantity
         holder.amounTv.text = "$ " + itemTotal.toString()
         holder.deleteTv.setOnClickListener {
-            groceryItemClickInterface.onItemClick(list.get(position))
+//            groceryItemClickInterface.onItemClick(list.get(position))
+            vm.delete(list[position])
         }
     }
 

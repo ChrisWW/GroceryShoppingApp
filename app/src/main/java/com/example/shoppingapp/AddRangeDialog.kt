@@ -6,26 +6,35 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
 import androidx.fragment.app.DialogFragment
 import com.example.shoppingapp.databinding.AddRangeDialogBinding
 import com.example.shoppingapp.databinding.FragmentItemSecondBinding
+import org.w3c.dom.Text
 
 
 class AddRangeDialog(context: Context, var groceryItemClickInterface: GroceryRvAdapter.GroceryItemClickInterface) : AppCompatDialog(context) {
 
-    lateinit var binding: AddRangeDialogBinding
+//    lateinit var binding: AddRangeDialogBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_range_dialog)
-        binding = AddRangeDialogBinding.inflate(layoutInflater)
+//        binding = AddRangeDialogBinding.inflate(layoutInflater)
+        val addButton = findViewById<Button>(R.id.addButton)
+        val cancelButton = findViewById<Button>(R.id.cancelButton)
+        val itemNameText = findViewById<EditText>(R.id.itemName)
+        val itemQuantityText = findViewById<EditText>(R.id.itemQuantity)
+        val itemPriceText = findViewById<EditText>(R.id.itemPrice)
 
-        binding.addButton.setOnClickListener {
-            val itemName = binding.itemName.text.toString()
-            val itemQuantity = binding.itemQuantity.text.toString()
-            val itemPrice = binding.itemPrice.text.toString()
+
+            addButton?.setOnClickListener {
+            val itemName = itemNameText?.text.toString()
+            val itemQuantity = itemQuantityText?.text.toString()
+            val itemPrice = itemPriceText?.text.toString()
 
             if(itemName.isEmpty() || itemQuantity.isEmpty() || itemPrice.isEmpty()) {
                 Toast.makeText(context, "Please enter all the information", Toast.LENGTH_SHORT).show()
@@ -38,7 +47,7 @@ class AddRangeDialog(context: Context, var groceryItemClickInterface: GroceryRvA
             Log.d("dialog", "Add Dialog")
         }
 
-        binding.cancelButton.setOnClickListener {
+        cancelButton?.setOnClickListener {
             cancel()
             Log.d("dialog", "Cancel Dialog")
         }

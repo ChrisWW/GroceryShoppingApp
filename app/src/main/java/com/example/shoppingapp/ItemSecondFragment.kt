@@ -38,17 +38,18 @@ class ItemSecondFragment : Fragment(), GroceryRvAdapter.GroceryItemClickInterfac
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        groceryRvAdapter = GroceryRvAdapter(list, this)
-        binding.idRvItems.layoutManager = LinearLayoutManager(context)
-        binding.idRvItems.adapter = groceryRvAdapter
         val groceryRepository = GroceryRepository(GroceryDataBase(requireContext()))
         val factory = GroceryViewModelFactory(groceryRepository)
         groceryViewModel = ViewModelProvider(this, factory).get(GroceryViewModel::class.java)
+
+        groceryRvAdapter = GroceryRvAdapter(list, this, groceryViewModel)
+        binding.idRvItems.layoutManager = LinearLayoutManager(context)
+        binding.idRvItems.adapter = groceryRvAdapter
         groceryViewModel.getAllGroceryItems().observe(viewLifecycleOwner, Observer {
             groceryRvAdapter.list = it
             groceryRvAdapter.notifyDataSetChanged()
         })
+
         binding.idFABadd.setOnClickListener {
             openDialog()
         }
