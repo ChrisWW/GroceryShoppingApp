@@ -7,19 +7,28 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.shoppingapp.MainFragment"
+        android:name="com.example.shoppingapp.mainfragment.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
+        <argument
+            android:name="position"
+            app:argType="string"
+            android:defaultValue="0"/>
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="0" />
         <action
             android:id="@+id/action_mainFragment_to_itemSecondFragment"
             app:destination="@id/itemSecondFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemSecondFragment"
-        android:name="com.example.shoppingapp.ItemSecondFragment"
+        android:name="com.example.shoppingapp.secondfragment.ItemSecondFragment"
         android:label="ItemSecondFragment" >
         <action
             android:id="@+id/action_itemSecondFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
-    </fragment><action android:id="@+id/action_global_mainFragment" app:destination="@id/mainFragment"/>
+    </fragment>
+    <action android:id="@+id/action_global_mainFragment" app:destination="@id/mainFragment"/>
 </navigation>

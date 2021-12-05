@@ -1,11 +1,11 @@
-package com.example.shoppingapp
+package com.example.shoppingapp.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [GroceryItems::class], version = 1)
+@Database(entities = [GroceryItems::class, GroceryListItems::class], version = 1)
 abstract class GroceryDataBase : RoomDatabase() {
 
     abstract fun getGroceryDao(): GroceryDao

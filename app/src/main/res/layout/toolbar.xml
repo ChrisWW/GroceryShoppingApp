@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/teal_700"
+    android:elevation="4dp">
+
+</androidx.appcompat.widget.Toolbar>
+</com.google.android.material.appbar.AppBarLayout>
+
+
+<!--<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:local="http://schemas.android.com/apk/res-auto"-->
+<!--xmlns:app="http://schemas.android.com/tools"-->
+<!--android:id="@+id/toolbar"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:minHeight="?attr/actionBarSize"-->
+<!--android:layout_marginTop="25dp"-->
+<!--android:background="@null"-->
+<!--android:titleTextColor="@color/purple_700"-->
+<!--local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+<!--local:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+<!--android:contentInsetLeft="10dp"-->
+<!--android:contentInsetRight="10dp"-->
+<!--android:contentInsetStart="10dp"-->
+<!--android:padding="0dp"-->
+<!--app:contentInsetLeft="10dp"-->
+<!--app:contentInsetRight="10dp"-->
+<!--app:contentInsetStart="10dp"-->
+<!--app:ignore="NamespaceTypo" />-->

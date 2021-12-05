@@ -1,15 +1,15 @@
-package com.example.shoppingapp
+package com.example.shoppingapp.secondfragment
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shoppingapp.R
+import com.example.shoppingapp.room.GroceryItems
 
-class GroceryRvAdapter (var list: List<GroceryItems>, val groceryItemClickInterface: GroceryRvAdapter.GroceryItemClickInterface, private val vm: GroceryViewModel) : RecyclerView.Adapter<GroceryRvAdapter.GroceryViewHolder>(){
+class GroceryRvAdapter (var list: List<GroceryItems>, val groceryItemClickInterface: GroceryItemClickInterface, private val vm: GroceryViewModel) : RecyclerView.Adapter<GroceryRvAdapter.GroceryViewHolder>(){
 
 
     inner class GroceryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
