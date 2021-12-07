@@ -14,8 +14,11 @@ data class GroceryItems (
     var itemQuantity: Int,
 
     @ColumnInfo(name = "itemPrice")
-    var itemPrice: Int
+    var itemPrice: Int,
+
+    val shopOwnerId  : Int
     ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
+
 }

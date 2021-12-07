@@ -15,6 +15,10 @@ class AddRangeDialog(context: Context, var groceryItemClickInterface: GroceryRvA
 
 //    lateinit var binding: AddRangeDialogBinding
 
+    // chcesz dodac produkt do sklepu
+    // zeby to zrobic, w tym miejscu powinnines miec id sklepu, dla ciebie to jest pozycja
+    // czyli wystarczy ze stworzysz QUERY ktore wrzuca czyli PUT do bazy danych obiekt GroceryIetms
+    // i przekazesz do niego id sklepu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_range_dialog)
@@ -25,6 +29,13 @@ class AddRangeDialog(context: Context, var groceryItemClickInterface: GroceryRvA
         val itemQuantityText = findViewById<EditText>(R.id.itemQuantity)
         val itemPriceText = findViewById<EditText>(R.id.itemPrice)
 
+        var fragSecond = ItemSecondFragment()
+        val arguments = fragSecond.arguments
+
+        val position = arguments?.getString("position_key")
+        val name = arguments?.getString("name_key")
+
+        Log.d("second","FROM second dialog $position, $name")
 
             addButton?.setOnClickListener {
             val itemName = itemNameText?.text.toString()
@@ -36,7 +47,7 @@ class AddRangeDialog(context: Context, var groceryItemClickInterface: GroceryRvA
                 return@setOnClickListener
             }
 
-            val item = GroceryItems(itemName, itemQuantity.toInt(), itemPrice.toInt())
+            val item = GroceryItems(itemName, itemQuantity.toInt(), itemPrice.toInt(), 2)
             groceryItemClickInterface.onItemClick(item)
             dismiss()
             Log.d("dialog", "Add Dialog")

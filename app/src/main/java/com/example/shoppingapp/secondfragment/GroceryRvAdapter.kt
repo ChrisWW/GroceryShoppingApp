@@ -75,7 +75,9 @@ class GroceryRvAdapter (var list: List<GroceryItems>, val groceryItemClickInterf
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: GroceryViewHolder, position: Int) {
-        holder.nameTv.text = list.get(position).itemName
+//        val flattenedList: List<GroceryItems> = list.flatten()
+
+        holder.nameTv.text = (list.get(position)).itemName
         holder.quantityTv.text = list.get(position).itemQuantity.toString()
         holder.rateTv.text = list.get(position).itemPrice.toString()
         val itemTotal : Int = list.get(position).itemPrice*list.get(position).itemQuantity

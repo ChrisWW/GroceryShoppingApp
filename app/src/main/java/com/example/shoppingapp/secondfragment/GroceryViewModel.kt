@@ -28,4 +28,7 @@ class GroceryViewModel(private val repository: GroceryRepository) : ViewModel() 
     }
 
     fun Description() = repository.getAllItems()
+
+    // do secondFragment
+    fun getGroceriesWithProducts() = repository.getGroceriesWithProducts()
 }

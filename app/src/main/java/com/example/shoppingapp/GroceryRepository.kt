@@ -21,4 +21,8 @@ class GroceryRepository(private val db: GroceryDataBase) {
 
     fun getAllItemsList() = db.getGroceryDao().getAllGroceryItemsList()
 
+
+    // transaction
+    fun getGroceriesWithProducts() = db.getGroceryDao().getGroceriesWithProducts()
+
 }

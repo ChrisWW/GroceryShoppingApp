@@ -61,7 +61,7 @@ class GroceryRvAdapterMain(
         holder.rootView.setOnClickListener {
             mComunicator.respond(position, list.get(position).itemName)
 
-
+// navigate to second fragment
             val bundle = bundleOf("position" to position.toString(), "name" to list.get(position).itemName)
             holder.rootView.findNavController()
                 .navigate(R.id.action_mainFragment_to_itemSecondFragment, bundle)

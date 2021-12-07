@@ -35,10 +35,6 @@ class ItemSecondFragment : Fragment(), GroceryRvAdapter.GroceryItemClickInterfac
     lateinit var groceryViewModel: GroceryViewModel
     lateinit var binding: FragmentItemSecondBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -76,7 +72,15 @@ class ItemSecondFragment : Fragment(), GroceryRvAdapter.GroceryItemClickInterfac
         val position = arguments?.getString("position")
         val name = arguments?.getString("name")
 
+
         Log.d("second","FROM second fragment $position, $name")
+
+        val positionDialog = arguments?.putString("position_key",position)
+
+        val nameDialog = arguments?.putString("name_key", name)
+
+        Log.d("second","FROM second fragment DIALOG POSITION $positionDialog, $nameDialog")
+
 
         val groceryRepository = GroceryRepository(GroceryDataBase(requireContext()))
         val factory = GroceryViewModelFactory(groceryRepository)
@@ -112,4 +116,6 @@ class ItemSecondFragment : Fragment(), GroceryRvAdapter.GroceryItemClickInterfac
         groceryRvAdapter.notifyDataSetChanged()
         Toast.makeText(context, "Item deleted...", Toast.LENGTH_SHORT)
     }
+
+
 }

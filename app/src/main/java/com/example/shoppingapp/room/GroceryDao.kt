@@ -16,7 +16,8 @@ interface GroceryDao {
     suspend fun deleteItem(itemId: Int)
 
     @Query("SELECT * FROM grocery_items")
-    fun getAllGroceryItems() : LiveData<List<GroceryItems>>
+    fun getAllGroceryItems(): LiveData<List<GroceryItems>>
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDescription(item: List<GroceryItems>)
@@ -25,10 +26,10 @@ interface GroceryDao {
     suspend fun deleteDescription(item: List<GroceryItems>)
 
     @Query("SELECT * FROM grocery_items")
-    fun getAllGroceryItemsDescription() : LiveData<List<GroceryItems>>
+    fun getAllGroceryItemsDescription(): LiveData<List<GroceryItems>>
 
 
-    //
+    // 1 fragment
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertList(item: GroceryListItems)
 
@@ -39,5 +40,9 @@ interface GroceryDao {
     suspend fun deleteItemList(itemId: Int)
 
     @Query("SELECT * FROM grocery_items_list")
-    fun getAllGroceryItemsList() : LiveData<List<GroceryListItems>>
+    fun getAllGroceryItemsList(): LiveData<List<GroceryListItems>>
+
+    @Transaction
+    @Query("SELECT * FROM grocery_items_list")
+    fun getGroceriesWithProducts(): List<ShopWithGroceryItems>
 }
