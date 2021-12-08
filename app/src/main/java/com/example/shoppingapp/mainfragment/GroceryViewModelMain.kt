@@ -28,7 +28,7 @@ class GroceryViewModelMain(private val repository: GroceryRepository) : ViewMode
     fun getAllList() = repository.getAllItemsList()
 
     //transaction
-    fun getGroceriesWithProducts() = repository.getGroceriesWithProducts()
+//    fun getGroceriesWithProducts() = repository.getGroceriesWithProducts()
 
 
     fun onItemRootClicked(id: Int) {

@@ -23,13 +23,18 @@ import com.example.shoppingapp.room.GroceryDataBase
 import com.example.shoppingapp.room.GroceryItems
 import android.R
 import androidx.appcompat.widget.Toolbar
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.shoppingapp.databinding.ActivityMainBinding
 import com.example.shoppingapp.databinding.ToolbarBinding
+import com.example.shoppingapp.room.ShopWithGroceryItems
 
 
-class ItemSecondFragment : Fragment(), GroceryRvAdapter.GroceryItemClickInterface{
+class ItemSecondFragment() : Fragment(), GroceryRvAdapter.GroceryItemClickInterface{
     lateinit var itemsRV: RecyclerView
     lateinit var addFAB: FloatingActionButton
+    var listGrocery: List<ShopWithGroceryItems> = emptyList()
     var list: List<GroceryItems> = emptyList()
     lateinit var groceryRvAdapter: GroceryRvAdapter
     lateinit var groceryViewModel: GroceryViewModel
@@ -68,37 +73,66 @@ class ItemSecondFragment : Fragment(), GroceryRvAdapter.GroceryItemClickInterfac
 //        val tv = view.findViewById<TextView>(R.id.textVAmount)
 
 
+//        Log.d("second","FROM second fragment $position, $name")
+//
+//        val positionDialog = arguments?.putString("position_key",position)
+//
+//        val nameDialog = arguments?.putString("name_key", name)
 
-        val position = arguments?.getString("position")
-        val name = arguments?.getString("name")
-
-
-        Log.d("second","FROM second fragment $position, $name")
-
-        val positionDialog = arguments?.putString("position_key",position)
-
-        val nameDialog = arguments?.putString("name_key", name)
-
-        Log.d("second","FROM second fragment DIALOG POSITION $positionDialog, $nameDialog")
-
+//        Log.d("second","FROM second fragment DIALOG POSITION $positionDialog, $nameDialog")
 
         val groceryRepository = GroceryRepository(GroceryDataBase(requireContext()))
         val factory = GroceryViewModelFactory(groceryRepository)
         groceryViewModel = ViewModelProvider(this, factory).get(GroceryViewModel::class.java)
 
-        groceryRvAdapter = GroceryRvAdapter(list, this, groceryViewModel)
+        groceryRvAdapter = GroceryRvAdapter(listGrocery ,list, this, groceryViewModel)
         binding.idRvItems.layoutManager = LinearLayoutManager(context)
         binding.idRvItems.adapter = groceryRvAdapter
-        groceryViewModel.getAllGroceryItems().observe(viewLifecycleOwner, Observer {
-            groceryRvAdapter.list = it
+
+        val position = arguments?.getString("position")
+        val name = arguments?.getString("name")
+
+        Log.d("null","FROM second fragment $position, $name")
+
+        positionValue = position!!
+        nameValue = name!!
+
+        binding.textViewSecond.text = nameValue
+        Log.d("second","FROM second fragment $positionValue, $nameValue")
+
+//        if(positionValue.toInt() == 0){
+//            positionValue = "1"
+//        }
+        groceryViewModel.getByIdGroceriesWithProducts(positionValue.toInt()).observe(viewLifecycleOwner, Observer {
+
+            Log.d("TEST","${positionValue.toInt()}")
+            Log.d("TEST","${listGrocery}")
+            Log.d("TEST","${groceryRvAdapter.listGrocery}")
+            Log.d("TEST","${it}")
+//            Log.d("TEST","${it.groveceryList}")
+            if(it == null || it.groveceryList.isEmpty()) {
+                it?.groveceryList = emptyList()
+                groceryRvAdapter.list = emptyList()
+            }else {
+            groceryRvAdapter.list = it.groveceryList
+            }
             groceryRvAdapter.notifyDataSetChanged()
         })
+//        groceryViewModel.getAllGroceryItems().observe(viewLifecycleOwner, Observer {
+//            groceryRvAdapter.listGrocery = groceryViewModel.getByIdGroceriesWithProducts(position.toInt())
+////            groceryRvAdapter.list = it
+//            Log.d("secondrfragment", "${groceryRvAdapter.listGrocery}")
+//            groceryRvAdapter.notifyDataSetChanged()
+//        })
 
         binding.idFABadd.setOnClickListener {
+//            val bundle = bundleOf("position" to position.toString(), "name" to name)
+////            findNavController().navigate(com.example.shoppingapp.R.id.action_itemSecondFragment_to_my_dialog, bundle)
+
             openDialog()
         }
         binding.deleteAll.setOnClickListener {
-
+            groceryViewModel.deleteByIdGroceriesWithProducts(groceryRvAdapter.getProducts().map { it.id })
         }
     }
 
@@ -115,6 +149,10 @@ class ItemSecondFragment : Fragment(), GroceryRvAdapter.GroceryItemClickInterfac
         groceryViewModel.delete(groceryItems)
         groceryRvAdapter.notifyDataSetChanged()
         Toast.makeText(context, "Item deleted...", Toast.LENGTH_SHORT)
+    }
+    companion object {
+        var positionValue = ""
+        var nameValue = ""
     }
 
 

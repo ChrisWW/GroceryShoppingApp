@@ -9,5 +9,5 @@ data class ShopWithGroceryItems (
                 parentColumn = "id",
                 entityColumn = "shopOwnerId"
             )
-            val groveceryList: List<GroceryItems>
+            var groveceryList: List<GroceryItems> = emptyList()
 )

@@ -1,8 +1,10 @@
 package com.example.shoppingapp
 
+import androidx.lifecycle.LiveData
 import com.example.shoppingapp.room.GroceryDataBase
 import com.example.shoppingapp.room.GroceryItems
 import com.example.shoppingapp.room.GroceryListItems
+import com.example.shoppingapp.room.ShopWithGroceryItems
 
 class GroceryRepository(private val db: GroceryDataBase) {
 
@@ -23,6 +25,9 @@ class GroceryRepository(private val db: GroceryDataBase) {
 
 
     // transaction
-    fun getGroceriesWithProducts() = db.getGroceryDao().getGroceriesWithProducts()
+    fun getGroceriesWithProducts(): LiveData<List<ShopWithGroceryItems>> = db.getGroceryDao().getGroceriesWithProducts()
 
+    fun getByIdGroceriesWithProducts(id: Int) : LiveData<ShopWithGroceryItems> = db.getGroceryDao().getByIdGroceriesWithProducts(id)
+
+    fun deleteByIdGroceriesWithProducts(id: List<Int>) = db.getGroceryDao().deleteByIdGroceriesWithProducts(id)
 }

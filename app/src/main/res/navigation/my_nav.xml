@@ -29,6 +29,13 @@
         <action
             android:id="@+id/action_itemSecondFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_itemSecondFragment_to_my_dialog"
+            app:destination="@id/my_dialog" />
     </fragment>
+    <dialog
+        android:id="@+id/my_dialog"
+        android:name="com.example.shoppingapp.secondfragment.AddRangeDialog"
+        tools:layout="@layout/add_range_dialog" />
     <action android:id="@+id/action_global_mainFragment" app:destination="@id/mainFragment"/>
 </navigation>

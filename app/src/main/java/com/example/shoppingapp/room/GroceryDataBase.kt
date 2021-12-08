@@ -26,7 +26,7 @@ abstract class GroceryDataBase : RoomDatabase() {
                 context.applicationContext,
                 GroceryDataBase::class.java,
                 "Grocery.db"
-            ).build()
+            ).allowMainThreadQueries().build()
 
     }
 }

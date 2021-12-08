@@ -17,15 +17,23 @@
             android:background="@color/teal_700"
             android:elevation="4dp">
 
+            <TextView
+                android:id="@+id/textViewSecond"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
             <ImageView
                 android:id="@+id/deleteAll"
                 android:layout_width="86dp"
                 android:layout_height="51dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="300dp"
-                app:srcCompat="@android:drawable/ic_menu_delete" />/>
+                android:layout_marginLeft="180dp"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
+
 
         </androidx.appcompat.widget.Toolbar>
+
 
 
     </com.google.android.material.appbar.AppBarLayout>

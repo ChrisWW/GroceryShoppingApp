@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
 import com.example.shoppingapp.R
 import com.example.shoppingapp.room.GroceryItems
-
+import android.R.attr.name
 
 class AddRangeDialog(context: Context, var groceryItemClickInterface: GroceryRvAdapter.GroceryItemClickInterface) : AppCompatDialog(context) {
 
@@ -29,12 +29,16 @@ class AddRangeDialog(context: Context, var groceryItemClickInterface: GroceryRvA
         val itemQuantityText = findViewById<EditText>(R.id.itemQuantity)
         val itemPriceText = findViewById<EditText>(R.id.itemPrice)
 
-        var fragSecond = ItemSecondFragment()
-        val arguments = fragSecond.arguments
+//        var fragSecond = ItemSecondFragment()
+//        val args = Bundle()
+//        fragSecond.
+//        val arguments = fragSecond.arguments
 
-        val position = arguments?.getString("position_key")
-        val name = arguments?.getString("name_key")
+//        val position = args.getString("position")
+//        val name = args.getString("name")
 
+        val position = ItemSecondFragment.positionValue.toInt()
+        val name = ItemSecondFragment.nameValue
         Log.d("second","FROM second dialog $position, $name")
 
             addButton?.setOnClickListener {
@@ -47,7 +51,7 @@ class AddRangeDialog(context: Context, var groceryItemClickInterface: GroceryRvA
                 return@setOnClickListener
             }
 
-            val item = GroceryItems(itemName, itemQuantity.toInt(), itemPrice.toInt(), 2)
+            val item = GroceryItems(itemName, itemQuantity.toInt(), itemPrice.toInt(), position.toInt())
             groceryItemClickInterface.onItemClick(item)
             dismiss()
             Log.d("dialog", "Add Dialog")
